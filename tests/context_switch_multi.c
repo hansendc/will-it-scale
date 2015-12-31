@@ -159,7 +159,7 @@ void testcase(unsigned long long *iterations)
 	xsave(xsave_buf, 0xffff);
 	// and now take it all out of the init state
 	xsave_buf->xsave_hdr.xstate_bv = xgetbv(0);
-	xrstor(xsave_buf, 0x21f);
+	xrstor(xsave_buf, 0xffff);
 	printf("c XCR0: 0x%jx XINUSE: 0x%jx\n", xgetbv(0), xgetbv(1));
 
 	while (1) {
