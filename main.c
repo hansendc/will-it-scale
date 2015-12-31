@@ -160,7 +160,7 @@ void new_task(void *(func)(void *), void *arg)
 void new_task_affinity(struct args *args,
 		       size_t cpuset_size, cpu_set_t *mask)
 {
-	cpu_set_t old_mask;
+	//cpu_set_t old_mask;
 	int pid;
 
 	//sched_getaffinity(0, sizeof(old_mask), &old_mask);
