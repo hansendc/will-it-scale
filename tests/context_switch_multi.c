@@ -51,6 +51,10 @@ static inline uint64_t xgetbv(uint32_t index)
 {
         uint32_t eax, edx;
 
+	// Whoops, XGETBV[1] is not supported on BDW
+	if (index != 0)
+		return -1;
+
         asm volatile(".byte 0x0f,0x01,0xd0" /* xgetbv */
                      : "=a" (eax), "=d" (edx)
                      : "c" (index));
