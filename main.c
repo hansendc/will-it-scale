@@ -102,7 +102,7 @@ void new_task_affinity(struct args *args,
 
 	pthread_attr_init(&attr);
 
-	pthread_attr_setaffinity_np(&attr, cpuset_size, mask);
+	//pthread_attr_setaffinity_np(&attr, cpuset_size, mask);
 
 	pthread_create(&tid, &attr, testcase_trampoline, args);
 
@@ -163,8 +163,8 @@ void new_task_affinity(struct args *args,
 	cpu_set_t old_mask;
 	int pid;
 
-	sched_getaffinity(0, sizeof(old_mask), &old_mask);
-	sched_setaffinity(0, cpuset_size, mask);
+	//sched_getaffinity(0, sizeof(old_mask), &old_mask);
+	//sched_setaffinity(0, cpuset_size, mask);
 
 	parent_pid = getpid();
 
@@ -186,7 +186,7 @@ void new_task_affinity(struct args *args,
 		testcase_trampoline(args);
 	}
 
-	sched_setaffinity(0, sizeof(old_mask), &old_mask);
+	//sched_setaffinity(0, sizeof(old_mask), &old_mask);
 
 	pids[nr_pids++] = pid;
 }
